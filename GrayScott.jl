@@ -11,10 +11,6 @@ end
 
 # Transition rules
 function action(u,v)
-    Ny,Nx = size(u)
-    ∇²u = zeros(Ny,Nx)
-    ∇²v = zeros(Ny,Nx)
-
     F = 0.034
     k = 0.095
     r = 1
