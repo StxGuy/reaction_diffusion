@@ -17,7 +17,7 @@ function action(u,v)
     Du = 1
     Dv = 0.5
     
-    dt = 0.1
+    dt = 1
     
     uv² = u.*(v.^2)
     
@@ -37,6 +37,6 @@ anim = @animate for i = 1:10000
     heatmap(B./(A+B),c=:redsblues)
 end
 
-gif(anim, "test.gif", fps = 50)
+gif(anim, "test.gif", fps = 150)
     
             
