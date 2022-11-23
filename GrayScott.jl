@@ -11,18 +11,21 @@ end
 
 # Transition rules
 function action(u,v)
-    F = 0.034
-    k = 0.095
+    F = 0.037
+    k = 0.06
     r = 1
-    Du = 1
-    Dv = 0.5
+    Du = 0.21
+    Dv = 0.105
     
-    dt = 1
+    dt = 0.1
     
     uv² = u.*(v.^2)
     
-    un = u + (Du*∇²(u) - r*uv² + F*(1 .- u))*dt
-    vn = v + (Dv*∇²(v) + r*uv² - (F + k)*v)*dt
+    ∂u = Du*∇²(u) - r*uv² + F*(1 .- u)
+    ∂v = Dv*∇²(v) + r*uv² - (F + k)*v
+    
+    un = u + ∂u*dt
+    vn = v + ∂v*dt
     
     return un,vn
 end
@@ -37,6 +40,6 @@ anim = @animate for i = 1:10000
     heatmap(B./(A+B),c=:redsblues)
 end
 
-gif(anim, "test.gif", fps = 150)
+gif(anim, "test.gif", fps = 250)
     
             
